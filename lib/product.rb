@@ -10,9 +10,6 @@ class Product
     add_product
   end
 
-  def in_stock?
-    #todo
-  end
 
   def self.all
     @@products
@@ -27,8 +24,12 @@ class Product
     end
   end
 
+  def in_stock?
+    @stock > 0
+  end
+
   def self.in_stock
-    #todo
+    @@products.select {|has_stock| has_stock.in_stock?}
   end
 
   private
