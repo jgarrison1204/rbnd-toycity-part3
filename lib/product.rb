@@ -18,15 +18,13 @@ class Product
     @@products
   end
 
-  #Overwrites the to_s in puts when printing @title
-  def to_s
-    "#{@title} #{@price} #{@stock}"
-  end
-
   def self.find_by_title(stuff)
-    #todo
     @@products.each do |find|
-      [find].include? stuff
+      search = find.title.include? stuff
+      if search == true
+        return find
+      end
+    end
   end
 
   def self.in_stock
@@ -36,9 +34,12 @@ class Product
   private
 
   def add_product
+    @@products.each do |dup|
+      duplicate = dup.title.include? @title
+      if duplicate == true
+        raise DuplicateProductError, "#{@title} already exists."
+      end
+    end
     @@products << self
-    #@@products.each do |title|
-      #puts [title].something.include? @title
-    #end
   end
 end
