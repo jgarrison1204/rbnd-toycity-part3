@@ -1,0 +1,16 @@
+
+1. How long did you spend working on this project?
+	Probably spent about 8 hours working on this project. That includes research....and more research. 
+
+2. What was the most rewarding challenge you conquered?
+	Gaining a baseline understanding of how to manipulate objects.
+	I think, I understand how objects can be inserted into arrays, how to loop through those objects and call methods native to each object. 
+	
+3. What two additional features did you build? Why?
+	1. I added an item_id for each product.  As a product base grows we'd want to autoincrement as new products arrive and have the unique id be an integer.
+	2. Created the self.find_by_name method in the transaction class.  This method allows employees to search for a customers last transaction by name. 
+	   When dealing with a customer inquiry we'd probably want a way to quickly access their last transaction by name.
+
+
+4. Where do you still have room to grow?
+	Everywhere. lol.
