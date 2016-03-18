@@ -13,12 +13,7 @@
   end
 
   def self.find_by_name(name)
-      @@customers.each do |cust|
-      search = cust.name.include? name
-      if search == true
-        return cust
-      end
-    end
+      @@customers.each {|cust| return cust if cust.name == name}
   end
 
   def purchase(product)
@@ -31,13 +26,10 @@
   end
 
   private
+
   def add_customer
-    @@customers.each do |cust|
-      dup_cust = cust.name.include? @name
-      if dup_cust == true
-        raise DuplicateCustomerError, "#{@name} already exists."
-      end
-    end
+    @@customers.each {|cust| raise DuplicateCustomerError, "#{@name} already exists." if
+    cust.name == @name}
     @@customers << self
   end
 end
