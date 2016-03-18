@@ -21,6 +21,10 @@ class Customer
     end
   end
 
+  def purchase(product)
+    something = Transaction.new(@name, product)
+  end
+
   private
   def add_customer
     @@customers.each do |cust|

@@ -10,14 +10,13 @@ class Product
     add_product
   end
 
-
   def self.all
     @@products
   end
 
-  def self.find_by_title(stuff)
+  def self.find_by_title(title)
     @@products.each do |find|
-      search = find.title.include? stuff
+      search = find.title.include? title
       if search == true
         return find
       end
@@ -26,6 +25,10 @@ class Product
 
   def in_stock?
     @stock > 0
+  end
+
+  def decrement_stock
+    @stock -= 1
   end
 
   def self.in_stock
