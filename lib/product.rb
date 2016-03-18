@@ -41,7 +41,7 @@ class Product
     @@products.each do |dup|
       duplicate = dup.title.include? @title
       if duplicate == true
-        raise DuplicateProductError, "#{@title} already exists."
+        raise DuplicateProductError, "#{@title} already exists!"
       end
     end
     @@products << self
