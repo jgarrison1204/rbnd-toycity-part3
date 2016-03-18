@@ -15,15 +15,26 @@ class Transaction
     @@transactions
   end
 
-  #why won't include work on fixnum in this case.  Need to convert to string.
-  def self.find(idd)
+  #why won't include? work on fixnum in this case.  Need to convert to string.
+  def self.find(id)
     @@transactions.each do |find|
-      search = find.id.to_s.include? idd.to_s
+      search = find.id.to_s.include? id.to_s
       if search == true
         return find
       end
     end
   end
+
+  #New function.  Returns the most recent transaction for a customer
+  def self.find_by_name(name)
+    @@transactions.reverse.each do |find|
+      search = find.customer.to_s.include? name
+      if search == true
+        return puts "The last product #{find.customer} purchased was #{find.product.title}"
+      end
+    end
+  end
+
 
 private
 
