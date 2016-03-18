@@ -25,7 +25,6 @@
     title = product.title
     if product.in_stock? == true
       new_purchasae = Transaction.new(@name, product)
-      puts "Congrats on buying a #{title}, #{@name}"
     else
       raise OutOfStockError, "#{title} is out of stock."
     end
