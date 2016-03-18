@@ -2,7 +2,7 @@ class Transaction
 
   attr_reader :customer, :product, :id
 
-  @@id = 0
+  @@id = 1
   @@transactions = []
 
   def initialize(customer, product)
@@ -15,9 +15,13 @@ class Transaction
     @@transactions
   end
 
+  #why won't include work on fixnum in this case.  Need to convert to string.
   def self.find(idd)
     @@transactions.each do |find|
-      puts "ID NUMBER: #{find.id}"
+      search = find.id.to_s.include? idd.to_s
+      if search == true
+        return find
+      end
     end
   end
 
@@ -30,7 +34,7 @@ private
 
   def add_transaction_number
     @id = @@id
-    @id += 1
+    @@id += 1
     @@transactions << self
   end
 end
