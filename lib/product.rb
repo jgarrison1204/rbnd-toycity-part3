@@ -16,12 +16,7 @@ class Product
   end
 
   def self.find_by_title(title)
-    @@products.each do |find|
-      search = find.title.include? title
-      if search == true
-        return find
-      end
-    end
+    @@products.each {|find| return find if find.title == title}
   end
 
   def in_stock?
@@ -39,12 +34,7 @@ class Product
   private
 
   def add_product
-    @@products.each do |dup|
-      duplicate = dup.title.include? @title
-      if duplicate == true
-        raise DuplicateProductError, "#{@title} already exists!"
-      end
-    end
+    @@products.each {|dup| raise DuplicateProductError, "#{title} already exists!" if dup.title == @title}
     @@products << self
   end
 end
